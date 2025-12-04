@@ -113,4 +113,4 @@ A API é simulada através do arquivo `db.json`. Os dados principais são:
 
 ---
 
-Desenvolvido com 💙 por [Seu Nome]
+Desenvolvido com 💙 por Matheus Santos

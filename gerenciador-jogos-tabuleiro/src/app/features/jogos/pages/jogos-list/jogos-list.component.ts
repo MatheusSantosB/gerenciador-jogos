@@ -1,9 +1,9 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-// Angular Material
+// Angular Material Imports
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,14 +14,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
-// Models e Services
-// Certifique-se que os caminhos abaixo estão corretos no seu projeto
-import { JogoTabuleiro, Categoria } from '../../models/jogo-tabuleiro.model';
+import { JogoTabuleiro } from '../../models/jogo-tabuleiro.model';
 import { JogosService } from '../../services/jogos.service';
 import { LoadingService } from '../../../../core/services/loading.service';
-
-// Componentes
 import { ConfirmDialogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
@@ -31,7 +29,6 @@ import { ConfirmDialogComponent } from '../../../../shared/components/confirm-di
     CommonModule,
     RouterModule,
     FormsModule,
-    // Material Modules
     MatTableModule,
     MatButtonModule,
     MatIconModule,
@@ -41,111 +38,71 @@ import { ConfirmDialogComponent } from '../../../../shared/components/confirm-di
     MatCardModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   templateUrl: './jogos-list.component.html',
   styleUrl: './jogos-list.component.scss'
 })
 export class JogosListComponent implements OnInit {
-  // Services
   private jogosService = inject(JogosService);
   protected loadingService = inject(LoadingService);
   private snackBar = inject(MatSnackBar);
   private dialog = inject(MatDialog);
 
-  // Signals
-  jogos = signal<JogoTabuleiro[]>([]);
-  jogosFiltrados = signal<JogoTabuleiro[]>([]);
-  categorias = signal<Categoria[]>([
-    'Estratégia', 'Familiar', 'Party', 'Cooperativo', 'Abstrato', 'Eurogame'
-  ]);
-  
-  // Filtros
-  filtroNome = signal('');
-  filtroCategoria = signal<string>('');
-  filtroDisponivel = signal<boolean | null>(null);
+  // Variáveis exigidas pelo HTML
+  dataSource: JogoTabuleiro[] = [];
+  totalJogos = 0;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 20];
+  searchTerm = '';
 
-  // Tabela
-  displayedColumns: string[] = [
-    'nome', 
-    'categoria', 
-    'jogadores', 
-    'tempo', 
-    'preco', 
-    'complexidade',
-    'estoque',
-    'acoes'
-  ];
+  displayedColumns: string[] = ['nome', 'categoria', 'preco', 'estoque', 'acoes'];
 
   ngOnInit() {
     this.carregarJogos();
   }
 
   carregarJogos() {
-    this.loadingService.show('Carregando jogos...');
+    this.loadingService.show();
     
-    this.jogosService.listar().subscribe({
-      next: (jogos) => {
-        this.jogos.set(jogos);
-        this.jogosFiltrados.set(jogos);
-        this.loadingService.hide();
-      },
-      error: (error) => {
-        this.snackBar.open('Erro ao carregar jogos', 'Fechar', {
-          duration: 3000,
-          panelClass: ['error-snackbar']
-        });
-        this.loadingService.hide();
-        console.error('Erro:', error);
-      }
-    });
+    // Chama o serviço passando página, limite e termo de busca
+    this.jogosService.listar(this.pageIndex + 1, this.pageSize, this.searchTerm)
+      .subscribe({
+        next: (response) => {
+          this.dataSource = response.body || [];
+          const totalHeader = response.headers.get('X-Total-Count');
+          this.totalJogos = totalHeader ? Number(totalHeader) : 0;
+          this.loadingService.hide();
+        },
+        error: (error) => {
+          console.error('Erro ao carregar jogos:', error);
+          this.mostrarMensagem('Erro ao carregar jogos', 'error-snackbar');
+          this.loadingService.hide();
+        }
+      });
   }
 
-  aplicarFiltros() {
-    let filtrados = this.jogos();
-    
-    // Filtrar por nome
-    if (this.filtroNome()) {
-      const termo = this.filtroNome().toLowerCase();
-      filtrados = filtrados.filter(jogo => 
-        jogo.nome.toLowerCase().includes(termo) ||
-        jogo.descricao.toLowerCase().includes(termo) ||
-        jogo.tags.some(tag => tag.toLowerCase().includes(termo))
-      );
-    }
-    
-    // Filtrar por categoria
-    if (this.filtroCategoria()) {
-      filtrados = filtrados.filter(jogo => 
-        jogo.categoria === this.filtroCategoria()
-      );
-    }
-    
-    // Filtrar por disponibilidade
-    if (this.filtroDisponivel() !== null) {
-      filtrados = filtrados.filter(jogo => 
-        jogo.disponivel === this.filtroDisponivel()
-      );
-    }
-    
-    this.jogosFiltrados.set(filtrados);
+  onSearch() {
+    this.pageIndex = 0; // Volta para a primeira página ao pesquisar
+    this.carregarJogos();
   }
 
-  limparFiltros() {
-    this.filtroNome.set('');
-    this.filtroCategoria.set('');
-    this.filtroDisponivel.set(null);
-    this.jogosFiltrados.set(this.jogos());
+  onPageChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.carregarJogos();
   }
 
-  confirmarExclusao(jogo: JogoTabuleiro) {
+  abrirDialogoExclusao(jogo: JogoTabuleiro) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        titulo: 'Confirmar Exclusão',
-        mensagem: `Tem certeza que deseja excluir "${jogo.nome}"?`,
-        textoConfirmar: 'Excluir',
-        textoCancelar: 'Cancelar',
-        corConfirmar: 'warn'
+        title: 'Confirmar Exclusão',
+        message: `Tem certeza que deseja excluir "${jogo.nome}"?`,
+        confirmText: 'Excluir',
+        cancelText: 'Cancelar'
       }
     });
 
@@ -157,58 +114,25 @@ export class JogosListComponent implements OnInit {
   }
 
   excluirJogo(id: number) {
-    this.loadingService.show('Excluindo jogo...');
-    
+    this.loadingService.show();
     this.jogosService.deletar(id).subscribe({
       next: () => {
-        this.snackBar.open('Jogo excluído com sucesso!', 'Fechar', {
-          duration: 3000,
-          panelClass: ['success-snackbar']
-        });
-        
-        // Atualizar lista
-        const novosJogos = this.jogos().filter(jogo => jogo.id !== id);
-        this.jogos.set(novosJogos);
-        this.jogosFiltrados.set(novosJogos);
-        
-        this.loadingService.hide();
+        this.mostrarMensagem('Jogo excluído com sucesso!', 'success-snackbar');
+        this.carregarJogos(); // Recarrega a lista para refletir a exclusão
       },
-      error: (error) => {
-        this.snackBar.open('Erro ao excluir jogo', 'Fechar', {
-          duration: 3000,
-          panelClass: ['error-snackbar']
-        });
+      error: () => {
+        this.mostrarMensagem('Erro ao excluir jogo', 'error-snackbar');
         this.loadingService.hide();
-        console.error('Erro:', error);
       }
     });
   }
 
-  // --- Funções de Formatação Corrigidas ---
-
-  formatarJogadores(jogo: JogoTabuleiro): string {
-    if (!jogo.numeroJogadores) return '-';
-    const { min, max } = jogo.numeroJogadores;
-    return min === max ? `${min}` : `${min}-${max}`;
-  }
-
-  formatarTempo(jogo: JogoTabuleiro): string {
-    if (!jogo.tempoJogo) return '-';
-    const { min, max } = jogo.tempoJogo;
-    return min === max ? `${min} min` : `${min}-${max} min`;
-  }
-
-  formatarComplexidade(nivel: number): string {
-    // Validação: Se não for número, retorna vazio
-    if (typeof nivel !== 'number') return '☆☆☆☆☆';
-
-    // 1. Arredonda para inteiro (necessário para .repeat funcionar)
-    // 2. Garante que fique entre 0 e 5
-    const nivelSeguro = Math.max(0, Math.min(5, Math.round(nivel)));
-
-    const estrelas = '★'.repeat(nivelSeguro);
-    const vazias = '☆'.repeat(5 - nivelSeguro);
-    
-    return estrelas + vazias;
+  mostrarMensagem(msg: string, classe: string) {
+    this.snackBar.open(msg, 'Fechar', {
+      duration: 3000,
+      panelClass: [classe],
+      horizontalPosition: 'end',
+      verticalPosition: 'top'
+    });
   }
 }

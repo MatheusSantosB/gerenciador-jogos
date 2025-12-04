@@ -1,60 +1,736 @@
 {
   "jogos": [
     {
-      "nome": "Xadrez",
+      "id": "1",
+      "nome": "Catan",
+      "descricao": "Os jogadores tentam ser a força dominante na ilha de Catan construindo povoados, cidades e estradas.",
+      "preco": 249.9,
       "categoria": "Estratégia",
-      "preco": 49.9,
-      "estoque": 20,
-      "designer": "Desconhecido",
-      "descricao": "O clássico jogo de estratégia.",
-      "complexidade": 5,
+      "designer": "Klaus Teuber",
+      "estoque": 10,
+      "notaMedia": 4.5,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 1995,
+      "complexidade": 2.3,
+      "numeroJogadores": {
+        "min": 3,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 60,
+        "max": 120
+      }
+    },
+    {
+      "id": "2",
+      "nome": "Ticket to Ride",
+      "descricao": "Uma aventura de trem através da América do Norte, conectando cidades e completando rotas.",
+      "preco": 219.9,
+      "categoria": "Familiar",
+      "designer": "Alan R. Moon",
+      "estoque": 15,
+      "notaMedia": 4.8,
+      "status": "promocao",
+      "imagemUrl": "",
+      "anoPublicacao": 2004,
+      "complexidade": 1.9,
       "numeroJogadores": {
         "min": 2,
-        "max": 2,
-        "ideal": 2
+        "max": 5
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 60
+      }
+    },
+    {
+      "id": "3",
+      "nome": "Dixit",
+      "descricao": "Um jogo de cartas ilustradas onde sua imaginação desvenda a história.",
+      "preco": 149.9,
+      "categoria": "Party",
+      "designer": "Jean-Louis Roubira",
+      "estoque": 20,
+      "notaMedia": 4.6,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2008,
+      "complexidade": 1.2,
+      "numeroJogadores": {
+        "min": 3,
+        "max": 6
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 30
+      }
+    },
+    {
+      "id": "4",
+      "nome": "Carcassonne",
+      "descricao": "Um jogo de colocação de peças onde os jogadores desenham a paisagem medieval.",
+      "preco": 169.9,
+      "categoria": "Familiar",
+      "designer": "Klaus-Jürgen Wrede",
+      "estoque": 8,
+      "notaMedia": 4.7,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2000,
+      "complexidade": 1.9,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 5
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 45
+      }
+    },
+    {
+      "id": "5",
+      "nome": "Pandemic",
+      "descricao": "Quatro doenças ameaçam o mundo e sua equipe deve encontrar a cura.",
+      "preco": 229.9,
+      "categoria": "Cooperativo",
+      "designer": "Matt Leacock",
+      "estoque": 5,
+      "notaMedia": 4.9,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2008,
+      "complexidade": 2.4,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 45,
+        "max": 45
+      }
+    },
+    {
+      "id": "6",
+      "nome": "7 Wonders",
+      "descricao": "Lidere uma das sete grandes cidades do mundo antigo.",
+      "preco": 269.9,
+      "categoria": "Estratégia",
+      "designer": "Antoine Bauza",
+      "estoque": 12,
+      "notaMedia": 4.8,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2010,
+      "complexidade": 2.3,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 7
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 30
+      }
+    },
+    {
+      "id": "7",
+      "nome": "Azul",
+      "descricao": "Os jogadores competem como artesãos decorando as paredes do Palácio Real.",
+      "preco": 259.9,
+      "categoria": "Abstrato",
+      "designer": "Michael Kiesling",
+      "estoque": 0,
+      "notaMedia": 4.9,
+      "status": "esgotado",
+      "imagemUrl": "",
+      "anoPublicacao": 2017,
+      "complexidade": 1.8,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 45
+      }
+    },
+    {
+      "id": "8",
+      "nome": "Terraforming Mars",
+      "descricao": "Controle uma corporação e trabalhe no processo de terraformação de Marte.",
+      "preco": 459.9,
+      "categoria": "Estratégia",
+      "designer": "Jacob Fryxelius",
+      "estoque": 4,
+      "notaMedia": 4.9,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2016,
+      "complexidade": 3.2,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 5
+      },
+      "tempoJogo": {
+        "min": 120,
+        "max": 120
+      }
+    },
+    {
+      "id": "9",
+      "nome": "Splendor",
+      "descricao": "Assuma o papel de um rico comerciante da Renascença.",
+      "preco": 189.9,
+      "categoria": "Familiar",
+      "designer": "Marc André",
+      "estoque": 18,
+      "notaMedia": 4.7,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2014,
+      "complexidade": 1.8,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 30
+      }
+    },
+    {
+      "id": "10",
+      "nome": "Codenames",
+      "descricao": "Duas equipes competem para fazer contato com seus agentes primeiro.",
+      "preco": 129.9,
+      "categoria": "Party",
+      "designer": "Vlaada Chvátil",
+      "estoque": 30,
+      "notaMedia": 4.8,
+      "status": "promocao",
+      "imagemUrl": "",
+      "anoPublicacao": 2015,
+      "complexidade": 1.3,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 8
+      },
+      "tempoJogo": {
+        "min": 15,
+        "max": 15
+      }
+    },
+    {
+      "id": "11",
+      "nome": "Gloomhaven",
+      "descricao": "Combate tático inspirado no estilo Euro em um mundo persistente.",
+      "preco": 999.9,
+      "categoria": "Estratégia",
+      "designer": "Isaac Childres",
+      "estoque": 2,
+      "notaMedia": 5,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2017,
+      "complexidade": 3.9,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 60,
+        "max": 120
+      }
+    },
+    {
+      "id": "12",
+      "nome": "Scythe",
+      "descricao": "Engine-building ambientado em um período de história alternativa de 1920.",
+      "preco": 449.9,
+      "categoria": "Estratégia",
+      "designer": "Jamey Stegmaier",
+      "estoque": 6,
+      "notaMedia": 4.8,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2016,
+      "complexidade": 3.4,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 5
+      },
+      "tempoJogo": {
+        "min": 90,
+        "max": 115
+      }
+    },
+    {
+      "id": "13",
+      "nome": "Wingspan",
+      "descricao": "Atraia as melhores aves para sua reserva natural.",
+      "preco": 349.9,
+      "categoria": "Familiar",
+      "designer": "Elizabeth Hargrave",
+      "estoque": 0,
+      "notaMedia": 4.7,
+      "status": "esgotado",
+      "imagemUrl": "",
+      "anoPublicacao": 2019,
+      "complexidade": 2.4,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 5
+      },
+      "tempoJogo": {
+        "min": 40,
+        "max": 70
+      }
+    },
+    {
+      "id": "14",
+      "nome": "The Resistance",
+      "descricao": "Dedução social onde a Resistência tenta derrubar um governo maligno.",
+      "preco": 89.9,
+      "categoria": "Party",
+      "designer": "Don Eskridge",
+      "estoque": 25,
+      "notaMedia": 4.5,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2009,
+      "complexidade": 1.6,
+      "numeroJogadores": {
+        "min": 5,
+        "max": 10
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 30
+      }
+    },
+    {
+      "id": "15",
+      "nome": "Blood Rage",
+      "descricao": "Controle um clã Viking com guerreiros, líder e navio em busca de glória.",
+      "preco": 399.9,
+      "categoria": "Estratégia",
+      "designer": "Eric M. Lang",
+      "estoque": 7,
+      "notaMedia": 4.8,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2015,
+      "complexidade": 2.8,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 60,
+        "max": 90
+      }
+    },
+    {
+      "id": "16",
+      "nome": "Love Letter",
+      "descricao": "Entregue sua carta de amor para a Princesa enquanto ela está no palácio.",
+      "preco": 49.9,
+      "categoria": "Party",
+      "designer": "Seiji Kanai",
+      "estoque": 50,
+      "notaMedia": 4.6,
+      "status": "promocao",
+      "imagemUrl": "",
+      "anoPublicacao": 2012,
+      "complexidade": 1.2,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 20,
+        "max": 20
+      }
+    },
+    {
+      "id": "17",
+      "nome": "King of Tokyo",
+      "descricao": "Monstros mutantes lutando em uma atmosfera divertida e caótica.",
+      "preco": 199.9,
+      "categoria": "Familiar",
+      "designer": "Richard Garfield",
+      "estoque": 14,
+      "notaMedia": 4.6,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2011,
+      "complexidade": 1.5,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 6
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 30
+      }
+    },
+    {
+      "id": "18",
+      "nome": "Brass: Birmingham",
+      "descricao": "Estratégia econômica na revolução industrial.",
+      "preco": 489.9,
+      "categoria": "Eurogame",
+      "designer": "Gavan Brown",
+      "estoque": 3,
+      "notaMedia": 4.9,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2018,
+      "complexidade": 3.9,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 60,
+        "max": 120
+      }
+    },
+    {
+      "id": "19",
+      "nome": "Everdell",
+      "descricao": "Uma civilização de criaturas da floresta está florescendo no vale.",
+      "preco": 399.9,
+      "categoria": "Familiar",
+      "designer": "James A. Wilson",
+      "estoque": 9,
+      "notaMedia": 4.8,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2018,
+      "complexidade": 2.8,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 40,
+        "max": 80
+      }
+    },
+    {
+      "id": "20",
+      "nome": "Root",
+      "descricao": "Guerra assimétrica pelo controle de uma vasta região selvagem.",
+      "preco": 359.9,
+      "categoria": "Estratégia",
+      "designer": "Cole Wehrle",
+      "estoque": 5,
+      "notaMedia": 4.7,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2018,
+      "complexidade": 3.8,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 60,
+        "max": 90
+      }
+    },
+    {
+      "id": "21",
+      "nome": "Spirit Island",
+      "descricao": "Jogo cooperativo sobre defender sua ilha natal da colonização.",
+      "preco": 429.9,
+      "categoria": "Cooperativo",
+      "designer": "R. Eric Reuss",
+      "estoque": 0,
+      "notaMedia": 4.9,
+      "status": "esgotado",
+      "imagemUrl": "",
+      "anoPublicacao": 2017,
+      "complexidade": 4,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 90,
+        "max": 120
+      }
+    },
+    {
+      "id": "22",
+      "nome": "Ark Nova",
+      "descricao": "Planeje e construa um zoológico moderno e cientificamente gerenciado.",
+      "preco": 479.9,
+      "categoria": "Eurogame",
+      "designer": "Mathias Wigge",
+      "estoque": 6,
+      "notaMedia": 4.9,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2021,
+      "complexidade": 3.7,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 90,
+        "max": 150
+      }
+    },
+    {
+      "id": "23",
+      "nome": "Dune: Imperium",
+      "descricao": "Construção de baralhos e alocação de trabalhadores em Duna.",
+      "preco": 329.9,
+      "categoria": "Estratégia",
+      "designer": "Paul Dennen",
+      "estoque": 11,
+      "notaMedia": 4.8,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2020,
+      "complexidade": 3,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 60,
+        "max": 120
+      }
+    },
+    {
+      "id": "24",
+      "nome": "Viticulture",
+      "descricao": "Crie o vinhedo mais próspero da Toscana.",
+      "preco": 319.9,
+      "categoria": "Eurogame",
+      "designer": "Jamey Stegmaier",
+      "estoque": 8,
+      "notaMedia": 4.6,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2015,
+      "complexidade": 2.9,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 6
+      },
+      "tempoJogo": {
+        "min": 45,
+        "max": 90
+      }
+    },
+    {
+      "id": "25",
+      "nome": "Great Western Trail",
+      "descricao": "Leve seu rebanho do Texas para Kansas City através das grandes planícies.",
+      "preco": 389.9,
+      "categoria": "Estratégia",
+      "designer": "Alexander Pfister",
+      "estoque": 4,
+      "notaMedia": 4.7,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2016,
+      "complexidade": 3.7,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 75,
+        "max": 150
+      }
+    },
+    {
+      "id": "26",
+      "nome": "Sagrada",
+      "descricao": "Um jogo de draft de dados e quebra-cabeça de colocação de janelas.",
+      "preco": 239.9,
+      "categoria": "Abstrato",
+      "designer": "Daryl Andrews",
+      "estoque": 16,
+      "notaMedia": 4.7,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2017,
+      "complexidade": 1.9,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 45
+      }
+    },
+    {
+      "id": "27",
+      "nome": "Santorini",
+      "descricao": "Construa como um mortal, vença como um Deus neste jogo abstrato.",
+      "preco": 179.9,
+      "categoria": "Abstrato",
+      "designer": "Gord!",
+      "estoque": 22,
+      "notaMedia": 4.5,
+      "status": "promocao",
+      "imagemUrl": "",
+      "anoPublicacao": 2016,
+      "complexidade": 1.7,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 4
+      },
+      "tempoJogo": {
+        "min": 20,
+        "max": 20
+      }
+    },
+    {
+      "id": "28",
+      "nome": "Zombicide",
+      "descricao": "Sobreviventes usam o poder de suas habilidades para vencer zumbis.",
+      "preco": 549.9,
+      "categoria": "Cooperativo",
+      "designer": "Raphaël Guiton",
+      "estoque": 0,
+      "notaMedia": 4.5,
+      "status": "esgotado",
+      "imagemUrl": "",
+      "anoPublicacao": 2012,
+      "complexidade": 2.5,
+      "numeroJogadores": {
+        "min": 1,
+        "max": 6
+      },
+      "tempoJogo": {
+        "min": 60,
+        "max": 60
+      }
+    },
+    {
+      "id": "29",
+      "nome": "Mysterium",
+      "descricao": "Um fantasma guia médiuns para descobrir um assassino.",
+      "preco": 289.9,
+      "categoria": "Cooperativo",
+      "designer": "Oleksandr Nevskiy",
+      "estoque": 7,
+      "notaMedia": 4.6,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2015,
+      "complexidade": 1.9,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 7
+      },
+      "tempoJogo": {
+        "min": 42,
+        "max": 42
+      }
+    },
+    {
+      "id": "30",
+      "nome": "Dead of Winter",
+      "descricao": "Jogo de encruzilhadas em uma colônia de sobreviventes enfraquecida.",
+      "preco": 369.9,
+      "categoria": "Cooperativo",
+      "designer": "Isaac Vega",
+      "estoque": 3,
+      "notaMedia": 4.4,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2014,
+      "complexidade": 2.9,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 5
+      },
+      "tempoJogo": {
+        "min": 60,
+        "max": 120
+      }
+    },
+    {
+      "id": "31",
+      "nome": "Jaipur",
+      "descricao": "Seja o comerciante mais poderoso da cidade de Jaipur.",
+      "preco": 119.9,
+      "categoria": "Familiar",
+      "designer": "Sébastien Pauchon",
+      "estoque": 28,
+      "notaMedia": 4.6,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2009,
+      "complexidade": 1.5,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 2
+      },
+      "tempoJogo": {
+        "min": 30,
+        "max": 30
+      }
+    },
+    {
+      "id": "32",
+      "nome": "Patchwork",
+      "descricao": "Um jogo de quebra-cabeça para dois jogadores sobre criar uma colcha.",
+      "preco": 149.9,
+      "categoria": "Abstrato",
+      "designer": "Uwe Rosenberg",
+      "estoque": 13,
+      "notaMedia": 4.7,
+      "status": "disponivel",
+      "imagemUrl": "",
+      "anoPublicacao": 2014,
+      "complexidade": 1.6,
+      "numeroJogadores": {
+        "min": 2,
+        "max": 2
+      },
+      "tempoJogo": {
+        "min": 15,
+        "max": 30
+      }
+    },
+    {
+      "id": "4dc4",
+      "nome": "aaaa",
+      "categoria": "Familiar",
+      "preco": 1,
+      "estoque": 0,
+      "designer": "aaaaa",
+      "descricao": "",
+      "complexidade": 2,
+      "numeroJogadores": {
+        "min": 4,
+        "max": 4,
+        "ideal": 4
       },
       "tempoJogo": {
         "min": 30,
         "max": 60
       },
       "faixaEtaria": "10+",
-      "disponivel": true,
+      "disponivel": false,
       "tags": [],
       "mecanicas": [],
       "expansoes": [],
       "imagemUrl": "",
       "notaMedia": 0,
       "editora": "Própria",
-      "anoPublicacao": 2025,
-      "id": "1"
-    },
-    {
-      "nome": "Dama",
-      "categoria": "Abstrato",
-      "preco": 25.5,
-      "estoque": 50,
-      "designer": "Desconhecido",
-      "descricao": "Jogo de captura de peças.",
-      "complexidade": 3,
-      "numeroJogadores": {
-        "min": 2,
-        "max": 2,
-        "ideal": 2
-      },
-      "tempoJogo": {
-        "min": 15,
-        "max": 30
-      },
-      "faixaEtaria": "10+",
-      "disponivel": true,
-      "tags": [],
-      "mecanicas": [],
-      "expansoes": [],
-      "imagemUrl": "",
-      "notaMedia": 0,
-      "editora": "Própria",
-      "anoPublicacao": 2025,
-      "id": "2"
+      "anoPublicacao": 2025
     }
   ]
 }

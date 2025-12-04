@@ -1,353 +1,70 @@
-.container {
-  padding: 24px;
+.container-fluid {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.header {
-  margin-bottom: 32px;
-  text-align: center;
-  
-  h1 {
-    color: #3f51b5;
-    margin: 0;
-    font-size: 2.5rem;
-  }
-  
-  p {
-    color: #666;
-    margin-top: 8px;
-    font-size: 1.1rem;
-  }
+.table-container {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.filtros-card {
-  margin-bottom: 24px;
-  
-  .filtros-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
-    align-items: center;
-    
-    .filtro-item {
-      width: 100%;
-    }
-    
-    .filtro-botoes {
-      display: flex;
-      gap: 12px;
-      justify-content: flex-end;
-      align-items: center;
-      
-      .limpar-btn {
-        color: #666;
-      }
-      
-      .novo-btn {
-        min-width: 140px;
-      }
-    }
-  }
-}
-
-.loading-container {
+/* Estilo da Célula de Detalhes (Nome, Autor, Descrição) */
+.game-details-cell {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px;
-  
-  p {
-    margin-top: 16px;
-    color: #666;
-  }
-}
+  padding: 12px 0;
+  gap: 4px;
 
-.tabela-container {
-  .tabela-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    
-    h3 {
-      margin: 0;
-      color: #333;
-      
-      .filtro-info {
-        font-size: 0.9rem;
-        color: #666;
-        font-weight: normal;
-        margin-left: 8px;
-      }
-    }
-  }
-}
-
-.nenhum-resultado {
-  text-align: center;
-  padding: 48px 24px;
-  
-  mat-icon {
-    font-size: 64px;
-    height: 64px;
-    width: 64px;
-    color: #ccc;
-    margin-bottom: 16px;
-  }
-  
-  h3 {
-    color: #666;
-    margin: 16px 0;
-  }
-  
-  p {
-    color: #888;
-    margin-bottom: 24px;
-  }
-}
-
-.tabela-wrapper {
-  overflow-x: auto;
-  border-radius: 8px;
-}
-
-.jogos-table {
-  width: 100%;
-  
-  th {
-    font-weight: 600;
+  .game-name {
+    font-size: 1.1rem;
+    font-weight: 500;
     color: #333;
-    background: #f5f5f5;
   }
-  
-  td {
-    vertical-align: middle;
-  }
-}
 
-.jogo-info {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  
-  .jogo-imagem {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .jogo-descricao {
-    color: #666;
-    font-size: 0.9rem;
-    margin: 4px 0;
-    line-height: 1.4;
-  }
-  
-  .jogo-tags {
+  .game-designer {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 4px;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
     
-    .tag {
-      background: #e3f2fd;
-      color: #1976d2;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: 500;
+    .tiny-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
     }
   }
+
+  .game-description {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.3;
+    max-width: 380px;
+  }
 }
 
-.categoria-badge {
-  display: inline-block;
-  padding: 4px 12px;
+/* Badges e Cores */
+.badge-categoria {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  padding: 4px 10px;
   border-radius: 16px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  text-align: center;
-  
-  &.estratégia {
-    background: #e8f5e9;
-    color: #2e7d32;
-  }
-  
-  &.familiar {
-    background: #fff3e0;
-    color: #ef6c00;
-  }
-  
-  &.party {
-    background: #f3e5f5;
-    color: #7b1fa2;
-  }
-  
-  &.cooperativo {
-    background: #e3f2fd;
-    color: #1565c0;
-  }
-  
-  &.abstrato {
-    background: #f5f5f5;
-    color: #424242;
-  }
-  
-  &.eurogame {
-    background: #fff8e1;
-    color: #ff8f00;
-  }
 }
 
-.info-cell {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  
-  mat-icon {
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
-    color: #666;
-  }
-}
-
-.preco {
+.game-price {
   font-weight: 600;
   color: #2e7d32;
-  font-size: 1.1rem;
 }
 
-.complexidade {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  .estrelas {
-    font-size: 1.2rem;
-    color: #ff9800;
-    letter-spacing: 2px;
-  }
-  
-  .nivel {
-    font-size: 0.8rem;
-    color: #666;
-    margin-top: 2px;
-  }
-}
-
-.estoque-cell {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 16px;
+.estoque-ok {
+  color: #2e7d32;
   font-weight: 500;
-  
-  &.alto {
-    background: #e8f5e9;
-    color: #2e7d32;
-  }
-  
-  &.baixo {
-    background: #fff3e0;
-    color: #ef6c00;
-  }
-  
-  &.esgotado {
-    background: #ffebee;
-    color: #c62828;
-  }
-  
-  .indisponivel-badge {
-    background: #f44336;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 10px;
-    font-size: 0.7rem;
-    margin-left: 4px;
-  }
-  
-  mat-icon {
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
-  }
 }
 
-.acoes-botoes {
-  display: flex;
-  gap: 8px;
-  
-  button {
-    mat-icon {
-      font-size: 20px;
-      width: 20px;
-      height: 20px;
-    }
-  }
-}
-
-// Responsividade
-@media (max-width: 768px) {
-  .container {
-    padding: 16px;
-  }
-  
-  .header {
-    h1 {
-      font-size: 2rem;
-    }
-  }
-  
-  .filtros-grid {
-    grid-template-columns: 1fr !important;
-  }
-  
-  .filtro-botoes {
-    flex-direction: column;
-    
-    button {
-      width: 100%;
-    }
-  }
-  
-  .jogo-info {
-    flex-direction: column;
-    text-align: center;
-    
-    .jogo-imagem {
-      width: 80px;
-      height: 80px;
-    }
-  }
-  
-  .acoes-botoes {
-    flex-direction: column;
-  }
-}
-
-// Snackbar customizado
-::ng-deep {
-  .success-snackbar {
-    background: #4caf50;
-    color: white;
-    
-    .mat-snack-bar-action {
-      color: #e8f5e9;
-    }
-  }
-  
-  .error-snackbar {
-    background: #f44336;
-    color: white;
-    
-    .mat-snack-bar-action {
-      color: #ffebee;
-    }
-  }
+.estoque-zerado {
+  color: #c62828;
+  font-weight: 600;
 }

@@ -1,0 +1,82 @@
+<div class="container p-4">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ isEdicao() ? 'Editar' : 'Novo' }} Jogo</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content class="pt-4">
+      <form [formGroup]="form" (ngSubmit)="salvar()" class="d-flex flex-column gap-3">
+        
+        <div class="row">
+          <mat-form-field class="col-md-6" appearance="outline">
+            <mat-label>Nome do Jogo</mat-label>
+            <input matInput formControlName="nome" placeholder="Ex: Catan">
+            <mat-error>Nome é obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6" appearance="outline">
+            <mat-label>Designer</mat-label>
+            <input matInput formControlName="designer">
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="col-md-4" appearance="outline">
+              <mat-label>Categoria</mat-label>
+              <mat-select formControlName="categoria">
+                @for (cat of categorias; track cat) {
+                    <mat-option [value]="cat">{{cat}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field class="col-md-4" appearance="outline">
+              <mat-label>Preço</mat-label>
+              <span matTextPrefix>R$ &nbsp;</span>
+              <input matInput type="number" formControlName="preco">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-4" appearance="outline">
+                <mat-label>Estoque</mat-label>
+                <input matInput type="number" formControlName="estoque">
+            </mat-form-field>
+        </div>
+
+        <div formGroupName="numeroJogadores" class="row mt-2">
+            <h4 class="col-12 text-muted mb-2">Número de Jogadores</h4>
+            <mat-form-field class="col-md-4" appearance="outline">
+                <mat-label>Mínimo</mat-label>
+                <input matInput type="number" formControlName="min">
+            </mat-form-field>
+            <mat-form-field class="col-md-4" appearance="outline">
+                <mat-label>Máximo</mat-label>
+                <input matInput type="number" formControlName="max">
+            </mat-form-field>
+            <mat-form-field class="col-md-4" appearance="outline">
+                <mat-label>Ideal</mat-label>
+                <input matInput type="number" formControlName="ideal">
+            </mat-form-field>
+        </div>
+
+        <div formGroupName="tempoJogo" class="row">
+            <h4 class="col-12 text-muted mb-2">Tempo de Jogo (minutos)</h4>
+            <mat-form-field class="col-md-6" appearance="outline">
+                <mat-label>Mínimo</mat-label>
+                <input matInput type="number" formControlName="min">
+            </mat-form-field>
+            <mat-form-field class="col-md-6" appearance="outline">
+                <mat-label>Máximo</mat-label>
+                <input matInput type="number" formControlName="max">
+            </mat-form-field>
+        </div>
+
+        <div class="actions d-flex justify-content-end gap-2 mt-3 border-top pt-3">
+            <button mat-button type="button" routerLink="/" color="warn">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+                <mat-icon>save</mat-icon> {{ isEdicao() ? 'Atualizar' : 'Salvar' }}
+            </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

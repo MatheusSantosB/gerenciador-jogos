@@ -3,8 +3,8 @@
     {
       "id": 1,
       "nome": "Catan",
-      "descricao": "Jogo de estratégia e negociação para construir civilizações",
-      "preco": 199.90,
+      "descricao": "Jogo de estratégia e comércio",
+      "preco": 199.9,
       "categoria": "Estratégia",
       "faixaEtaria": "10+",
       "numeroJogadores": { "min": 3, "max": 4, "ideal": 4 },
@@ -13,27 +13,19 @@
       "designer": "Klaus Teuber",
       "editora": "Devir",
       "anoPublicacao": 1995,
-      "mecanicas": ["Negociação", "Coleta de Recursos", "Construção"],
-      "expansoes": [
-        {
-          "id": 1,
-          "nome": "Cidades e Cavaleiros",
-          "preco": 149.90,
-          "lancamento": 1998,
-          "descricao": "Expansão avançada com novos elementos"
-        }
-      ],
-      "imagemUrl": "https://picsum.photos/400/300?random=1",
-      "notaMedia": 8.5,
-      "estoque": 15,
+      "mecanicas": ["Negociação", "Gestão de Mão"],
+      "expansoes": [],
+      "imagemUrl": "",
+      "notaMedia": 4.5,
+      "estoque": 10,
       "disponivel": true,
-      "tags": ["clássico", "família", "estratégia"]
+      "tags": ["clássico", "negociação"]
     },
     {
       "id": 2,
       "nome": "Ticket to Ride",
-      "descricao": "Jogo de construção de rotas ferroviárias pela América",
-      "preco": 179.90,
+      "descricao": "Jogo de construção de rotas ferroviárias",
+      "preco": 179.9,
       "categoria": "Familiar",
       "faixaEtaria": "8+",
       "numeroJogadores": { "min": 2, "max": 5, "ideal": 4 },
@@ -42,42 +34,13 @@
       "designer": "Alan R. Moon",
       "editora": "Galápagos",
       "anoPublicacao": 2004,
-      "mecanicas": ["Construção de Rotas", "Coleta de Cartas"],
+      "mecanicas": ["Colecionar Componentes", "Construção de Rotas"],
       "expansoes": [],
-      "imagemUrl": "https://picsum.photos/400/300?random=2",
-      "notaMedia": 8.7,
+      "imagemUrl": "",
+      "notaMedia": 4.3,
       "estoque": 8,
       "disponivel": true,
-      "tags": ["trem", "família", "fácil"]
-    },
-    {
-      "id": 3,
-      "nome": "Carcassonne",
-      "descricao": "Jogo de colocação de peças para construir cidades medievais",
-      "preco": 159.90,
-      "categoria": "Estratégia",
-      "faixaEtaria": "7+",
-      "numeroJogadores": { "min": 2, "max": 5, "ideal": 3 },
-      "tempoJogo": { "min": 30, "max": 45 },
-      "complexidade": 2,
-      "designer": "Klaus-Jürgen Wrede",
-      "editora": "Galápagos",
-      "anoPublicacao": 2000,
-      "mecanicas": ["Colocação de Peças", "Controle de Área"],
-      "expansoes": [
-        {
-          "id": 2,
-          "nome": "Inns and Cathedrals",
-          "preco": 89.90,
-          "lancamento": 2002,
-          "descricao": "Primeira grande expansão"
-        }
-      ],
-      "imagemUrl": "https://picsum.photos/400/300?random=3",
-      "notaMedia": 8.3,
-      "estoque": 12,
-      "disponivel": true,
-      "tags": ["medieval", "tile-laying", "clássico"]
+      "tags": ["trens", "família"]
     }
   ]
 }

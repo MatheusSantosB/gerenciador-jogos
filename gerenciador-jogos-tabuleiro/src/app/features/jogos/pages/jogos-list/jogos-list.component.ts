@@ -16,6 +16,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 // Models e Services
+// Certifique-se que os caminhos abaixo estão corretos no seu projeto
 import { JogoTabuleiro, Categoria } from '../../models/jogo-tabuleiro.model';
 import { JogosService } from '../../services/jogos.service';
 import { LoadingService } from '../../../../core/services/loading.service';
@@ -183,19 +184,31 @@ export class JogosListComponent implements OnInit {
     });
   }
 
+  // --- Funções de Formatação Corrigidas ---
+
   formatarJogadores(jogo: JogoTabuleiro): string {
+    if (!jogo.numeroJogadores) return '-';
     const { min, max } = jogo.numeroJogadores;
     return min === max ? `${min}` : `${min}-${max}`;
   }
 
   formatarTempo(jogo: JogoTabuleiro): string {
+    if (!jogo.tempoJogo) return '-';
     const { min, max } = jogo.tempoJogo;
     return min === max ? `${min} min` : `${min}-${max} min`;
   }
 
   formatarComplexidade(nivel: number): string {
-    const estrelas = '★'.repeat(nivel);
-    const vazias = '☆'.repeat(5 - nivel);
+    // Validação: Se não for número, retorna vazio
+    if (typeof nivel !== 'number') return '☆☆☆☆☆';
+
+    // 1. Arredonda para inteiro (necessário para .repeat funcionar)
+    // 2. Garante que fique entre 0 e 5
+    const nivelSeguro = Math.max(0, Math.min(5, Math.round(nivel)));
+
+    const estrelas = '★'.repeat(nivelSeguro);
+    const vazias = '☆'.repeat(5 - nivelSeguro);
+    
     return estrelas + vazias;
   }
 }

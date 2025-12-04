@@ -9,14 +9,14 @@
   <mat-card class="mb-4">
     <mat-card-content class="d-flex gap-3 align-items-center flex-wrap">
       <mat-form-field appearance="outline" class="flex-grow-1">
-        <mat-label>Buscar por nome</mat-label>
-        <input matInput [ngModel]="filtroNome()" (ngModelChange)="filtroNome.set($event); aplicarFiltros()">
+        <mat-label>Buscar por nome ou designer</mat-label>
+        <input matInput [ngModel]="filtroNome()" (ngModelChange)="filtroNome.set($event)">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Categoria</mat-label>
-        <mat-select [ngModel]="filtroCategoria()" (selectionChange)="filtroCategoria.set($event.value); aplicarFiltros()">
+        <mat-select [ngModel]="filtroCategoria()" (selectionChange)="filtroCategoria.set($event.value)">
           <mat-option value="">Todas</mat-option>
           @for (cat of categorias(); track cat) {
             <mat-option [value]="cat">{{ cat }}</mat-option>
@@ -24,7 +24,7 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-button (click)="limparFiltros()">Limpar Filtros</button>
+      <button mat-button color="warn" (click)="limparFiltros()">Limpar Filtros</button>
     </mat-card-content>
   </mat-card>
 
@@ -35,10 +35,10 @@
       </div>
     }
 
-    <table mat-table [dataSource]="jogosFiltrados()">
+    <table mat-table [dataSource]="dataSource" matSort>
       
       <ng-container matColumnDef="nome">
-        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
         <td mat-cell *matCellDef="let jogo"> 
           <strong>{{ jogo.nome }}</strong><br>
           <small class="text-muted">{{ jogo.designer }}</small>
@@ -46,7 +46,7 @@
       </ng-container>
 
       <ng-container matColumnDef="categoria">
-        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
         <td mat-cell *matCellDef="let jogo"> {{ jogo.categoria }} </td>
       </ng-container>
 
@@ -61,19 +61,19 @@
       </ng-container>
 
       <ng-container matColumnDef="preco">
-        <th mat-header-cell *matHeaderCellDef> Preço </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Preço </th>
         <td mat-cell *matCellDef="let jogo"> {{ jogo.preco | currency:'BRL' }} </td>
       </ng-container>
 
       <ng-container matColumnDef="complexidade">
-        <th mat-header-cell *matHeaderCellDef> Complexidade </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Complexidade </th>
         <td mat-cell *matCellDef="let jogo" class="text-warning"> 
           {{ formatarComplexidade(jogo.complexidade) }} 
         </td>
       </ng-container>
 
       <ng-container matColumnDef="estoque">
-        <th mat-header-cell *matHeaderCellDef> Estoque </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estoque </th>
         <td mat-cell *matCellDef="let jogo"> 
           <span [class.text-danger]="jogo.estoque === 0" [class.text-success]="jogo.estoque > 0">
             {{ jogo.estoque }} un.
@@ -102,5 +102,10 @@
         </td>
       </tr>
     </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Selecionar página de jogos">
+    </mat-paginator>
   </div>
 </div>

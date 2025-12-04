@@ -1,26 +1,18 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoadingService {
-  private isLoading = signal(false);
-  private loadingMessage = signal('Carregando...');
+  private _loading = new BehaviorSubject<boolean>(false);
+  public loading$ = this._loading.asObservable(); // O erro reclamava que isso faltava
 
-  // Getters como signals
-  readonly isLoadingSignal = this.isLoading.asReadonly();
-  readonly messageSignal = this.loadingMessage.asReadonly();
-
-  show(message: string = 'Carregando...') {
-    this.loadingMessage.set(message);
-    this.isLoading.set(true);
+  show(message?: string) {
+    this._loading.next(true);
   }
 
   hide() {
-    this.isLoading.set(false);
-  }
-
-  setMessage(message: string) {
-    this.loadingMessage.set(message);
+    this._loading.next(false);
   }
 }

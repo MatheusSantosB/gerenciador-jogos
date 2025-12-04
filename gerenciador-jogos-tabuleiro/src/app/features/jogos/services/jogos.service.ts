@@ -8,7 +8,7 @@ import { JogoTabuleiro } from '../models/jogo-tabuleiro.model';
 })
 export class JogosService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/jogos';
+  private apiUrl = 'http://localhost:3001jogos';
 
   // Listar todos os jogos
   listar(): Observable<JogoTabuleiro[]> {

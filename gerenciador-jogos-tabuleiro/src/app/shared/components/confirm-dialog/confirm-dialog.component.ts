@@ -14,7 +14,8 @@ export interface ConfirmDialogData {
   selector: 'app-confirm-dialog',
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
-  templateUrl: './confirm-dialog.component.html',
+  // A correção principal é garantir que o nome aqui bata com o nome do arquivo na pasta
+  templateUrl: './confirm-dialog.component.html', 
   styleUrls: ['./confirm-dialog.component.scss']
 })
 export class ConfirmDialogComponent {

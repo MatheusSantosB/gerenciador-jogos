@@ -48,7 +48,7 @@ import { ConfirmDialogComponent } from '../../../../shared/components/confirm-di
 export class JogosListComponent implements OnInit {
   // Services
   private jogosService = inject(JogosService);
-  private loadingService = inject(LoadingService);
+  protected loadingService = inject(LoadingService);
   private snackBar = inject(MatSnackBar);
   private dialog = inject(MatDialog);
 

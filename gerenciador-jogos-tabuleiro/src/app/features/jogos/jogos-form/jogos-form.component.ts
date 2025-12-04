@@ -7,10 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon'; // Adicionado
 import { CommonModule } from '@angular/common';
 
-import { JogosService } from '../../../services/jogos.service';
-import { Categoria } from '../../../models/jogo-tabuleiro.model';
+// Caminhos corrigidos baseados no erro log
+import { JogosService } from '../services/jogos.service';
+import { Categoria, JogoTabuleiro } from '../models/jogo-tabuleiro.model';
 
 @Component({
   selector: 'app-jogos-form',
@@ -24,14 +26,15 @@ import { Categoria } from '../../../models/jogo-tabuleiro.model';
     MatSelectModule,
     MatCardModule,
     MatSnackBarModule,
+    MatIconModule, // Adicionado
     RouterModule
   ],
   templateUrl: './jogos-form.component.html',
-  styleUrl: './jogos-form.component.scss'
+  // styleUrl removido pois o arquivo scss não foi criado
 })
 export class JogosFormComponent implements OnInit {
   private fb = inject(FormBuilder);
-  private jogosService = inject(JogosService);
+  private jogosService = inject(JogosService); // private funciona aqui, mas no template não
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private snackBar = inject(MatSnackBar);
@@ -40,7 +43,6 @@ export class JogosFormComponent implements OnInit {
   isEdicao = signal(false);
   idEdicao: number | null = null;
   
-  // Opções para o select baseadas no seu modelo
   categorias: Categoria[] = ['Estratégia', 'Familiar', 'Party', 'Cooperativo', 'Abstrato', 'Eurogame'];
 
   constructor() {
@@ -52,7 +54,6 @@ export class JogosFormComponent implements OnInit {
       designer: ['', Validators.required],
       descricao: [''],
       complexidade: [1, [Validators.required, Validators.min(1), Validators.max(5)]],
-      // Grupos aninhados para casar com a interface JogoTabuleiro
       numeroJogadores: this.fb.group({
         min: [1, [Validators.required, Validators.min(1)]],
         max: [4, [Validators.required, Validators.min(1)]],
@@ -66,7 +67,6 @@ export class JogosFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Verifica se tem ID na URL para saber se é edição
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEdicao.set(true);
@@ -77,11 +77,10 @@ export class JogosFormComponent implements OnInit {
 
   carregarJogo(id: number) {
     this.jogosService.buscarPorId(id).subscribe({
-      next: (jogo) => {
-        // Preenche o formulário com os dados do jogo
+      next: (jogo: JogoTabuleiro) => { // Tipagem adicionada
         this.form.patchValue(jogo);
       },
-      error: (erro) => {
+      error: (erro: any) => { // Tipagem adicionada
         console.error(erro);
         this.mostrarMensagem('Erro ao carregar dados do jogo', 'error-snackbar');
       }
@@ -93,10 +92,8 @@ export class JogosFormComponent implements OnInit {
 
     const formularioValores = this.form.value;
 
-    // Monta o objeto final garantindo campos obrigatórios que não estão no form
     const jogoParaSalvar = {
         ...formularioValores,
-        // Define valores padrão para campos que não colocamos no form visual
         faixaEtaria: '10+', 
         disponivel: formularioValores.estoque > 0,
         tags: [],
@@ -114,7 +111,7 @@ export class JogosFormComponent implements OnInit {
           this.mostrarMensagem('Jogo atualizado com sucesso!', 'success-snackbar');
           this.router.navigate(['/']);
         },
-        error: () => this.mostrarMensagem('Erro ao atualizar jogo', 'error-snackbar')
+        error: (erro: any) => this.mostrarMensagem('Erro ao atualizar jogo', 'error-snackbar')
       });
     } else {
       this.jogosService.criar(jogoParaSalvar).subscribe({
@@ -122,7 +119,7 @@ export class JogosFormComponent implements OnInit {
           this.mostrarMensagem('Jogo criado com sucesso!', 'success-snackbar');
           this.router.navigate(['/']);
         },
-        error: () => this.mostrarMensagem('Erro ao criar jogo', 'error-snackbar')
+        error: (erro: any) => this.mostrarMensagem('Erro ao criar jogo', 'error-snackbar')
       });
     }
   }

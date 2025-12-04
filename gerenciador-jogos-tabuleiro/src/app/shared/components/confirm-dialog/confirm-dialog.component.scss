@@ -1,0 +1,120 @@
+﻿.confirm-dialog-panel {
+  border-radius: 16px !important;
+  overflow: hidden;
+  
+  .mat-mdc-dialog-surface {
+    border-radius: 16px !important;
+  }
+}
+
+h2[mat-dialog-title] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin: 0;
+  padding: 24px 24px 20px 24px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  &::before {
+    content: "⚠️";
+    font-size: 1.8rem;
+  }
+}
+
+mat-dialog-content {
+  padding: 24px !important;
+  margin: 0 !important;
+  
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    
+    &::before {
+      content: "❓";
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+mat-dialog-actions {
+  padding: 16px 24px 24px 24px !important;
+  margin: 0 !important;
+  gap: 12px;
+  justify-content: flex-end;
+  background: #f8f9fa;
+  border-top: 1px solid #e0e6ed;
+  
+  button {
+    min-width: 120px;
+    padding: 10px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    
+    &:first-child {
+      border: 2px solid #e0e6ed;
+      background: white;
+      
+      &:hover {
+        background: #f5f7fa;
+        border-color: #c1c9d2;
+      }
+    }
+    
+    &:last-child {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+    }
+  }
+}
+
+/* Diálogo de exclusão específico */
+.confirm-dialog-panel[data-dialog-type="delete"] {
+  h2[mat-dialog-title] {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    
+    &::before {
+      content: "🗑️";
+    }
+  }
+  
+  mat-dialog-content p::before {
+    content: "🔥";
+  }
+  
+  mat-dialog-actions button:last-child {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  }
+}
+
+/* Diálogo de edição específico */
+.confirm-dialog-panel[data-dialog-type="edit"] {
+  h2[mat-dialog-title] {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    
+    &::before {
+      content: "✏️";
+    }
+  }
+  
+  mat-dialog-content p::before {
+    content: "📝";
+  }
+  
+  mat-dialog-actions button:last-child {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+  }
+}

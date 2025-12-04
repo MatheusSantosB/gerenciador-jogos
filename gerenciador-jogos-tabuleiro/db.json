@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "nome": "Catan",
+    "descricao": "Jogo de estratégia e comércio",
+    "preco": 199.9,
+    "categoria": "Estratégia",
+    "designer": "Klaus Teuber",
+    "estoque": 10,
+    "notaMedia": 4.5,
+    "status": "disponivel"
+  },
+  {
+    "id": "2",
+    "nome": "Ticket to Ride",
+    "descricao": "Jogo de construção de rotas ferroviárias",
+    "preco": 179.9,
+    "categoria": "Família",
+    "designer": "Alan R. Moon",
+    "estoque": 8,
+    "notaMedia": 4.3,
+    "status": "disponivel"
+  }
+]

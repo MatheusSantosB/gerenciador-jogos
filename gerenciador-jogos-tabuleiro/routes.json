@@ -1,0 +1,4 @@
+{
+  "/api/jogos": "/jogos",
+  "/api/jogos?_page=:page&_limit=:limit": "/jogos?_page=:page&_limit=:limit"
+}

@@ -8,7 +8,7 @@ import { JogoTabuleiro } from '../models/jogo-tabuleiro.model';
 })
 export class JogosService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3001jogos';
+  private apiUrl = 'http://localhost:3001/jogos';
 
   // Listar todos os jogos
   listar(): Observable<JogoTabuleiro[]> {
@@ -21,12 +21,12 @@ export class JogosService {
   }
 
   // Criar novo jogo
-  criar(jogo: Omit<JogoTabuleiro, 'id'>): Observable<JogoTabuleiro> {
+  criar(jogo: any): Observable<JogoTabuleiro> {
     return this.http.post<JogoTabuleiro>(this.apiUrl, jogo);
   }
 
   // Atualizar jogo
-  atualizar(id: number, jogo: Partial<JogoTabuleiro>): Observable<JogoTabuleiro> {
+  atualizar(id: number, jogo: any): Observable<JogoTabuleiro> {
     return this.http.put<JogoTabuleiro>(`${this.apiUrl}/${id}`, jogo);
   }
 
@@ -35,18 +35,12 @@ export class JogosService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  // Buscar por categoria
+  // Métodos de busca adicionais (opcionais, mas mantendo a compatibilidade)
   buscarPorCategoria(categoria: string): Observable<JogoTabuleiro[]> {
     return this.http.get<JogoTabuleiro[]>(`${this.apiUrl}?categoria=${categoria}`);
   }
 
-  // Buscar por nome
   buscarPorNome(nome: string): Observable<JogoTabuleiro[]> {
     return this.http.get<JogoTabuleiro[]>(`${this.apiUrl}?nome_like=${nome}`);
-  }
-
-  // Buscar por mecânica
-  buscarPorMecanica(mecanica: string): Observable<JogoTabuleiro[]> {
-    return this.http.get<JogoTabuleiro[]>(`${this.apiUrl}?mecanicas_like=${mecanica}`);
   }
 }
